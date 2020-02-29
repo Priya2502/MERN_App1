@@ -9,13 +9,12 @@ import {
   withRouter
 } from 'react-router-dom'
 
-class LoginComponent extends Component {
+class RegisterComponent extends Component {
   state = {
     email: "",
     password: "",
     msg: null,
-    loggedIn:false,
-    regPage:false
+    loggedIn:false
   };
   static propTypes = {
     isAuthenticated: PropTypes.bool,
@@ -46,11 +45,6 @@ class LoginComponent extends Component {
       [e.target.name]: e.target.value
     });
   };
-  register=()=>{
-    this.setState(()=>({
-      regPage:true
-    }))
-  }
   onSubmit = (e) => {
     e.preventDefault();
     const { email, password } = this.state;
@@ -64,9 +58,6 @@ class LoginComponent extends Component {
   render() {
     if(this.state.loggedIn==true){
       return <Redirect to='/shopping' />
-    }
-    else if(this.state.regPage==true){
-      return <Redirect to="/register" />
     }
     return React.createElement('html', {className:"loginHtml"}, React.createElement('head', {}, React.createElement('title', {}, 'Login Page')    /* Made with love by Mutiullah Samim  */
     /* Bootsrap 4 CDN */, React.createElement('link', {
@@ -83,14 +74,23 @@ class LoginComponent extends Component {
 'rel': 'stylesheet',
 'type': 'text/css',
 'href': 'styles.css'
-})), React.createElement('body', {className:"loginBody"}, React.createElement('div', { 'className': 'loginContainer' }, React.createElement('div', { 'className': 'd-flex justify-content-center h-100' }, React.createElement('div', { 'className': 'card' }, React.createElement('div', { 'className': 'card-header' }, React.createElement('h3', {}, 'Sign In'), React.createElement('div', { 'className': 'd-flex justify-content-end social_icon' }, React.createElement('span', {}, React.createElement('i', { 'className': 'fab fa-facebook-square' })), React.createElement('span', {}, React.createElement('i', { 'className': 'fab fa-google-plus-square' })), React.createElement('span', {}, React.createElement('i', { 'className': 'fab fa-twitter-square' })))), React.createElement('div', { 'className': 'card-body' }, React.createElement('form', {}, React.createElement('div', { 'className': 'input-group form-group' }, React.createElement('div', { 'className': 'input-group-prepend' }, React.createElement('span', { 'className': 'input-group-text' }, React.createElement('i', { 'className': 'fas fa-user' }))), React.createElement('input', {
-'type': 'email',
-'name': 'email',
-'id': 'email',
+})), React.createElement('body', {className:"loginBody"}, React.createElement('div', { 'className': 'loginContainer' }, React.createElement('div', { 'className': 'd-flex justify-content-center h-100' }, React.createElement('div', { 'className': 'card' }, React.createElement('div', { 'className': 'card-header' }, React.createElement('h3', {}, 'Sign Up'), React.createElement('div', { 'className': 'd-flex justify-content-end social_icon' }, React.createElement('span', {}, React.createElement('i', { 'className': 'fab fa-facebook-square' })), React.createElement('span', {}, React.createElement('i', { 'className': 'fab fa-google-plus-square' })), React.createElement('span', {}, React.createElement('i', { 'className': 'fab fa-twitter-square' })))), React.createElement('div', { 'className': 'card-body' }, React.createElement('form', {}, React.createElement('div', { 'className': 'input-group form-group' }, React.createElement('div', { 'className': 'input-group-prepend' }, React.createElement('span', { 'className': 'input-group-text' }, React.createElement('i', { 'className': 'fas fa-user' }))), React.createElement('input', {
+'type': 'text',
+'name': 'name',
+'id': 'name',
 'className': 'form-control',
-'placeholder': 'email',
+'placeholder': 'name',
 'onChange': this.onChange
-})), React.createElement('div', { 'className': 'input-group form-group' }, React.createElement('div', { 'className': 'input-group-prepend' }, React.createElement('span', { 'className': 'input-group-text' }, React.createElement('i', { 'className': 'fas fa-key' }))), React.createElement('input', {
+})), 
+React.createElement('div', { 'className': 'input-group form-group' }, React.createElement('div', { 'className': 'input-group-prepend' }, React.createElement('span', { 'className': 'input-group-text' }, React.createElement('i', { 'className': 'fas fa-key' }))), React.createElement('input', {
+    'type': 'email',
+    'name': 'email',
+    'id': 'email',
+    'className': 'form-control',
+    'placeholder': 'email',
+    'onChange': this.onChange
+    })),
+React.createElement('div', { 'className': 'input-group form-group' }, React.createElement('div', { 'className': 'input-group-prepend' }, React.createElement('span', { 'className': 'input-group-text' }, React.createElement('i', { 'className': 'fas fa-key' }))), React.createElement('input', {
 'type': 'password',
 'name': 'password',
 'id': 'password',
@@ -100,7 +100,7 @@ class LoginComponent extends Component {
 })), React.createElement('div', { 'className': 'row align-items-center remember' }, React.createElement('input', { 'type': 'checkbox' }), 'Remember Me\n\t\t\t\t\t'), React.createElement('div', { 'className': 'form-group' }, React.createElement('button', {
 'onClick': this.onSubmit.bind(this),
 'className': 'btn float-right login_btn'
-}, 'Login')))), React.createElement('div', { 'className': 'card-footer' }, React.createElement('div', { 'className': 'd-flex justify-content-center links' }, '\n\t\t\t\t\tDon\'t have an account?', React.createElement('a', { 'href': '#','onClick': this.register.bind(this) }, 'Sign Up'))))))));
+}, 'Register')))), React.createElement('div', { 'className': 'card-footer' }, React.createElement('div', { 'className': 'd-flex justify-content-center links' }, '\n\t\t\t\t\tAlready have an account?', React.createElement('a', { 'href': '#' }, 'Sign In'))))))));
 
   }
   }
@@ -113,4 +113,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { login, clearErrors }
-)(LoginComponent);//withRouter
+)(RegisterComponent);//withRouter

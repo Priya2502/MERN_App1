@@ -1,4 +1,4 @@
 {
-  "mongoURI": "mongodb://priya:muthuteacher29%40%2A@cluster0-shard-00-00-w47kc.mongodb.net:27017,cluster0-shard-00-01-w47kc.mongodb.net:27017,cluster0-shard-00-02-w47kc.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority/shopping_list",
-  "jwtSecret": "sl_myJwtSecret"
+  "mongoURI": "",
+  "jwtSecret": ""
 }

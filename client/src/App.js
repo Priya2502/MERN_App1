@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import AppNavbar from "./components/AppNavbar";
-import ItemModal from "./components/ItemModal";
-import ShoppingList from "./components/ShoppingList";
-import { Container } from "reactstrap";
 import store from "./store";
-import { Provider } from "react-redux";
 import { loadUser } from "./actions/authActions";
+
+import { BrowserRouter, Route, HashRouter } from "react-router-dom";
+import createBrowserHistory from "history/createBrowserHistory";
+import Shop from "./components/Providers/Shop";
+import Login from "./components/Providers/Login";
+import Register from "./components/Providers/Register";
+
+const history = createBrowserHistory();
 
 class App extends Component {
   componentDidMount() {
@@ -16,13 +19,14 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Provider store={store}>
-          <AppNavbar />
-          <Container>
-            <ItemModal />
-            <ShoppingList />
-          </Container>
-        </Provider>
+        <BrowserRouter history={history}>
+          <div>
+            <Route exact path="/" component={Login} />
+            <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
+            <Route path="/shopping" component={Shop} />
+          </div>
+        </BrowserRouter>
       </div>
     );
   }

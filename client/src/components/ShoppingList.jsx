@@ -4,6 +4,8 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { getItems, deleteItem } from "../actions/itemActions";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { Redirect } from "react-router-dom";
+
 class ShoppingList extends Component {
   state = {};
   static propTypes = {
@@ -19,6 +21,9 @@ class ShoppingList extends Component {
   };
   render() {
     const { items } = this.props.item;
+    if (this.props.isAuthenticated == false) {
+      return <Redirect to="/" />;
+    }
     return (
       <div>
         <ListGroup>
@@ -26,21 +31,18 @@ class ShoppingList extends Component {
             {items.map(({ _id, name }) => (
               <CSSTransition key={_id} timeout={500} classNames="fade">
                 <ListGroupItem>
-                  {this.props.isAuthenticated ? (
-                    <Button
-                      color="danger m-2"
-                      size="sm"
-                      onClick={
-                        //   this.setState({
-                        //     items: [...items.filter(item => item.id !== id)]
-                        //   })
-                        this.onDelete.bind(this, _id)
-                      }
-                    >
-                      &times;
-                    </Button>
-                  ) : null}
-
+                  <Button
+                    color="danger m-2"
+                    size="sm"
+                    onClick={
+                      //   this.setState({
+                      //     items: [...items.filter(item => item.id !== id)]
+                      //   })
+                      this.onDelete.bind(this, _id)
+                    }
+                  >
+                    &times;
+                  </Button>
                   {name}
                 </ListGroupItem>
               </CSSTransition>
