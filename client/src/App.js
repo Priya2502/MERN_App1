@@ -9,6 +9,7 @@ import createBrowserHistory from "history/createBrowserHistory";
 import Shop from "./components/Providers/Shop";
 import Login from "./components/Providers/Login";
 import Register from "./components/Providers/Register";
+import CardProvider from "./components/Providers/Card";
 
 const history = createBrowserHistory();
 
@@ -25,6 +26,7 @@ class App extends Component {
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
             <Route path="/shopping" component={Shop} />
+            <Route path="/card" component={CardProvider} />
           </div>
         </BrowserRouter>
       </div>

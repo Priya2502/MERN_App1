@@ -3,6 +3,7 @@ import "../../App.css";
 import AppNavbar from "../AppNavbar";
 import ItemModal from "../ItemModal";
 import ShoppingList from "../ShoppingList";
+import Card from "../Card";
 import { Container } from "reactstrap";
 import store from "../../store";
 import { Provider } from "react-redux";
@@ -19,7 +20,8 @@ class Shop extends Component {
           <AppNavbar />
           <Container>
             <ItemModal />
-            <ShoppingList />
+            {/* <ShoppingList /> */}
+            <Card />
           </Container>
         </Provider>
       </div>
