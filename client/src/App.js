@@ -6,10 +6,11 @@ import { loadUser } from "./actions/authActions";
 
 import { BrowserRouter, Route, HashRouter } from "react-router-dom";
 import createBrowserHistory from "history/createBrowserHistory";
-import Shop from "./components/Providers/Shop";
-import Login from "./components/Providers/Login";
-import Register from "./components/Providers/Register";
-import CardProvider from "./components/Providers/Card";
+import HomePage from "./components/HomePage";
+import RegisterComponent from "./components/auth/Register";
+import LoginComponent from "./components/auth/Login";
+
+import { Provider } from "react-redux";
 
 const history = createBrowserHistory();
 
@@ -20,15 +21,16 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <BrowserRouter history={history}>
-          <div>
-            <Route exact path="/" component={Login} />
-            <Route path="/login" component={Login} />
-            <Route path="/register" component={Register} />
-            <Route path="/shopping" component={Shop} />
-            <Route path="/card" component={CardProvider} />
-          </div>
-        </BrowserRouter>
+        <Provider store={store}>
+          <BrowserRouter history={history}>
+            <div>
+              <Route exact path="/" component={LoginComponent} />
+              <Route path="/login" component={LoginComponent} />
+              <Route path="/register" component={RegisterComponent} />
+              <Route path="/shopping" component={HomePage} />
+            </div>
+          </BrowserRouter>
+        </Provider>
       </div>
     );
   }
